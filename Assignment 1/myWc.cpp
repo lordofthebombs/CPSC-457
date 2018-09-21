@@ -32,10 +32,10 @@ int main (int argc, char * const argv[])
   else {
     filename = argv[1];
   }
-  
+
   // open the file for reading
-  int fd = open( filename.c_str(), O_RDONLY);
-  if( fd < 0) {
+  int fd = open(filename.c_str(), O_RDONLY);
+  if(fd < 0) {
     cerr << "Could not open file " << filename << "\n";
     exit(-1);
   }
@@ -44,8 +44,9 @@ int main (int argc, char * const argv[])
   int count = 0;
   while(1) {
     char c;
-    if( read( fd, & c, 1) < 1) break;
-    if( c == '\n') count ++;
+    if(read(fd, &c, 1) < 1) break;
+    if(c == '\n') count ++;
+
   }
 
   // close file and report results
