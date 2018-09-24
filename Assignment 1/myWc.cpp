@@ -5,7 +5,7 @@
  * Course:      CPSC 457
  * Tutorial:    3
  * Assignment:  1
- * Question:    Q4
+ * Question:    Q5
  *
  * File name: myWc.cpp
  *********************************************/
