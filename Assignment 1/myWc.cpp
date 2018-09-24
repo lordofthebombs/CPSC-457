@@ -19,6 +19,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+
 using namespace std;
 
 int main (int argc, char * const argv[])
@@ -43,14 +44,18 @@ int main (int argc, char * const argv[])
   // read file character by character and count lines
   int count = 0;
   while(1) {
-    char c;
-    if(read(fd, &c, 1) < 1) break;
-    if(c == '\n') count ++;
+    int BUFFER_SIZE = 25000;
+    char buffer[BUFFER_SIZE];
+    int bytesRead = read(fd, &buffer, BUFFER_SIZE);
+    if (bytesRead < 1) break;
+    for (int i = 0; i < bytesRead; i++) {
+      if (buffer[i] == '\n') count++;
+    }
 
   }
 
   // close file and report results
-  close( fd);
+  close(fd);
   cout << count << " " << filename << "\n";
   return 0;
 }
