@@ -19,6 +19,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#define BUFFER_SIZE 25000
 
 using namespace std;
 
@@ -44,7 +45,6 @@ int main (int argc, char * const argv[])
   // read file character by character and count lines
   int count = 0;
   while(1) {
-    int BUFFER_SIZE = 25000;
     char buffer[BUFFER_SIZE];
     int bytesRead = read(fd, &buffer, BUFFER_SIZE);
     if (bytesRead < 1) break;
