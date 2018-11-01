@@ -39,7 +39,6 @@ void * countPrimes (void * arg) {
     threadData *data = (threadData*) arg;
     int count = 0;
 
-    std::cout << data->numbers[0] << std::endl;
 
     for (int i = data->id; i < data->numbers.size(); i += data->threadCount) {
         if (isPrime(data->numbers[i])) {
@@ -57,7 +56,7 @@ int main(int argc, char ** argv)
     /// parse command line arguments
     int nThreads = 1;
     if (argc != 1 && argc != 2) {
-        printf("Uasge: countPrimes [nThreads]\n");
+        printf("Usage: countPrimes [nThreads]\n");
         exit(-1);
     }
     if (argc == 2) nThreads = atoi(argv[1]);
@@ -107,10 +106,8 @@ int main(int argc, char ** argv)
 
         // Summing up partial counts
         for (int i = 0; i < nThreads; i++) {
-            std::cout << data[i].partialCount << std::endl;
             count += data[i].partialCount;
         }
-
     }
 
     else {
