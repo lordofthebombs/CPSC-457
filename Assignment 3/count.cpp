@@ -1,8 +1,12 @@
-/// counts number of primes from standard input
-///
-/// compile with:
-///   $ gcc findPrimes.c -O2 -o count -lm
-///
+// Author: Bader Abdulwaseem
+// UCID: 30023849
+// CPSC 457
+// Question 7
+// counts number of primes from standard input
+//
+// compile with:
+//   $ g++ count.cpp -O2 -o count.out -lm -lpthread
+//
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
