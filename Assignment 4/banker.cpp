@@ -1,8 +1,8 @@
 /*
  * banker.cpp
  *
- * Student Name:
- * Student Number:
+ * Student Name: Bader Abdulwaseem
+ * Student Number: 30023849
  *
  * Class: CPSC 457 Spring 2017
  * Instructor: Pavol Federl
@@ -80,8 +80,32 @@ public:
      * @return Whether granting the request will lead to a safe state.
      */
     bool isSafe (int pid, int * req, string & sequenceOrReason) {
-        sequenceOrReason = "Not implemented yet.";
-        return false;
+        int requestLen = sizeof(req)/sizeof(req[0]);
+        // First of all checking if there are even enough available resources
+        for (int i = 0; i < requestLen; i++) {
+            if (req[i] > available[i]) {
+                sequenceOrReason = "not enough resources available.";
+                return false;
+            }
+        }
+
+        // Secondly, we check to see if the request exceeds the max of the process
+        for (int i = 0; i < requestLen; i++) {
+            if (req[i] > max[pid][i]) {
+                sequenceOrReason = "request is invalid. (exceeding max declared for process)";
+                return false;
+            }
+        }
+
+        // Calculating need matrix
+        for (int i = 0; i < numProc; i++) {
+            for (int j = 0; j < numResources; j++) {
+                need[i][j] = max[i][j] - allocation[i][j];
+            }
+        }
+
+        
+
     }
 };
 
